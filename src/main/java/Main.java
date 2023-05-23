@@ -5,16 +5,17 @@ import java.util.List;
 
 public class Main {
 
-    public static ArrayList<String> combine(String string, ArrayList<String> stringList) {
-        ArrayList<String> newCombinations = new ArrayList<>();
-        for (char c1character : string.toCharArray()) {
-            for(String s : stringList) {
-                for (char c2character: s.toCharArray()) {
-                    String newString = String.valueOf(c1character) + c2character;
-                    if (!newCombinations.contains(newString)) {
-                        newCombinations.add(newString);
-                    }
-                }
+    public static List<String> combine(String first, List<String> second) {
+        List<String> newCombinations = new ArrayList<>();
+
+        if (second.isEmpty()) {
+            second.add("");
+        }
+
+        for (char strcharacter : first.toCharArray()) {
+            for (String str2 : second) {
+                String newString = strcharacter + str2;
+                newCombinations.add(newString);
             }
         }
 
@@ -50,29 +51,15 @@ public class Main {
     public static void main( String[] args ) {
 
         HashMap<Character, String> digitToLettersMap = initDigitToLettersMap();
-        ArrayList<String> combinations = new ArrayList<>();
 
-        String testString = "234";
+        String testString = "56";
 
-        char c1 = testString.toCharArray()[0];
-        char c2 = testString.toCharArray()[1];
-        char c3 = testString.toCharArray()[2];
+        List<String> combinations = new ArrayList<>();
+        for (char strcharacter : testString.toCharArray()) {
+            combinations = combine(digitToLettersMap.get(strcharacter), combinations);
+            System.out.println(combinations);
+            System.out.println("Combinations: " + combinations.size());
+        }
 
-        String firstStr = digitToLettersMap.get(c1);
-        String secondStr = digitToLettersMap.get(c2);
-        String thirdStr = digitToLettersMap.get(c3);
-
-        ArrayList<String> listContainingFirstString = new ArrayList<>();
-        listContainingFirstString.add(secondStr);
-
-        ArrayList<String> firstPlustSecondString = combine(firstStr, listContainingFirstString);
-        System.out.println(firstPlustSecondString);
-        ArrayList<String> lastPlusFirstTwoStrins = combine(thirdStr, firstPlustSecondString);
-
-        System.out.println("String is " + testString);
-        System.out.println("Output: " + lastPlusFirstTwoStrins);
-        System.out.println("Number of combinations:" + lastPlusFirstTwoStrins.size());
-
-        List<Character> newList = new ArrayList<>(Arrays.asList('a', 'b', 'c'));
     }
 }
