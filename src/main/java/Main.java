@@ -20,6 +20,19 @@ public class Main {
 
         return newCombinations;
     }
+
+    public static List<String> combine(String first, String second) {
+        List<String> newCombinations = new ArrayList<>();
+        for (char s1character : first.toCharArray()) {
+            for (char s2character : second.toCharArray()) {
+                String newString = String.valueOf(s1character) + s2character;
+                newCombinations.add(newString);
+            }
+        }
+
+
+        return newCombinations;
+    }
     public static HashMap<Character, String> initDigitToLettersMap() {
         HashMap<Character, String> digitToLettersMap = new HashMap<>();
         digitToLettersMap.put('2', "abc");
