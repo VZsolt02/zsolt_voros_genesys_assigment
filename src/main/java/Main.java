@@ -1,3 +1,5 @@
+import combiner.Combiner;
+
 import java.util.List;
 import java.util.Scanner;
 

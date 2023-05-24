@@ -1,3 +1,5 @@
+package combiner;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +37,7 @@ public class Combiner {
         return true;
     }
 
-    public List<String> combine(String first, List<String> second) {
+    protected List<String> combine(String first, List<String> second) {
         List<String> newCombinations = new ArrayList<>();
 
         if (second.isEmpty()) {
