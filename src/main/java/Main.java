@@ -14,7 +14,7 @@ public class Main {
 
         for (char strcharacter : first.toCharArray()) {
             for (String str2 : second) {
-                String newString = strcharacter + str2;
+                String newString = str2 + strcharacter;
                 newCombinations.add(newString);
             }
         }
@@ -52,7 +52,7 @@ public class Main {
 
         HashMap<Character, String> digitToLettersMap = initDigitToLettersMap();
 
-        String testString = "56";
+        String testString = "234";
 
         List<String> combinations = new ArrayList<>();
         for (char strcharacter : testString.toCharArray()) {
