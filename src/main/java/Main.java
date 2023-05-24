@@ -1,7 +1,7 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.Console;
+import java.nio.Buffer;
+import java.util.*;
 
 public class Main {
 
@@ -48,11 +48,36 @@ public class Main {
         return digitToLettersMap;
     }
 
+    public static boolean validate(String input) {
+        if (input == null) return false;
+        if (input.length() > 4) return false;
+
+        for (char inputchar : input.toCharArray()) {
+            if (Integer.parseInt(String.valueOf(inputchar)) < 2) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    public static String readInput() {
+        Scanner sc = new Scanner(System.in);
+        String input = "";
+        do {
+            System.out.println("Your input: ");
+            input = sc.nextLine();
+        } while (!validate(input));
+
+        return input;
+    }
+
+
     public static void main( String[] args ) {
 
         HashMap<Character, String> digitToLettersMap = initDigitToLettersMap();
 
-        String testString = "234";
+        String testString = readInput();
+
 
         List<String> combinations = new ArrayList<>();
         for (char strcharacter : testString.toCharArray()) {
